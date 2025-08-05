@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* Base light theme variables */
+:root {
+  --background: #ECFAE5;
+  --foreground: #CAE8BD;
+  --primary-text-color: #556e49;
+  --nav-text-color: #dcead5;
+  --nav-body-color: #517b3d;
+
+  --font-sans: 'var(--font-geist-sans)';
+  --font-mono: 'var(--font-geist-mono)';
+}
+
+/* Dark theme overrides when `.dark` class is applied */
+.dark {
+  /* body */
+  --background: #0A2647;
+  --foreground: #144272;
+  --primary-accent-color: #D2C1B6; /* lines */
+  --primary-text-color: #F9F3EF;
+
+  /* nav */
+  --nav-body-color: #144272;
+  --nav-text-color: #ECFAE5;
+
+  /* card */
+}
+
+/* Apply the variables */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.2s ease;
+}
