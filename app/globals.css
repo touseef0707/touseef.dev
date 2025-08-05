@@ -2,11 +2,19 @@
 
 /* Base light theme variables */
 :root {
-  --background: #ECFAE5;
-  --foreground: #CAE8BD;
-  --primary-text-color: #556e49;
-  --nav-text-color: #dcead5;
-  --nav-body-color: #517b3d;
+  /* Body */
+  --background: #F8FAFC;
+  --foreground: #D9EAFD;
+  --primary-text-color: #000000;
+
+  /* nav */
+  --nav-bgc: #000000;
+  --nav-tc: #ffffff;
+
+  /* card */
+  --card-bgc: #ffffff;
+  --card-tc: #000000;
+  --card-bc: #000000;
 
   --font-sans: 'var(--font-geist-sans)';
   --font-mono: 'var(--font-geist-mono)';
@@ -21,10 +29,13 @@
   --primary-text-color: #F9F3EF;
 
   /* nav */
-  --nav-body-color: #144272;
-  --nav-text-color: #ECFAE5;
+  --nav-bgc: #144272;
+  --nav-tc: #ECFAE5;
 
   /* card */
+  --card-bgc: #000000;
+  --card-tc: #ffffff;
+  --card-bc: #ffffff;
 }
 
 /* Apply the variables */

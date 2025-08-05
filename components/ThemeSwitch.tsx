@@ -1,9 +1,9 @@
-// app/components/ThemeSwitch.tsx
 'use client'
 
 import { FiSun, FiMoon } from "react-icons/fi"
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
+import { motion } from 'framer-motion'
 import Image from "next/image"
 
 export default function ThemeSwitch() {
@@ -24,12 +24,38 @@ export default function ThemeSwitch() {
     />
   )
 
-  if (resolvedTheme === 'dark') {
-    return <FiSun onClick={() => setTheme('light')} />
-  }
-
-  if (resolvedTheme === 'light') {
-    return <FiMoon onClick={() => setTheme('dark')} />
-  }
-
+  return (
+    <motion.button
+      initial={{ scale: 1 }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
+      className="p-2 rounded-full transition-colors cursor-pointer"
+      aria-label="Toggle theme"
+    >
+      {resolvedTheme === 'dark' ? (
+        <motion.div
+          initial={{ rotate: 0, color: "currentColor" }}
+          whileHover={{ 
+            rotate: 90,
+            color: "#22d3ee" // cyan-400
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <FiSun className="w-5 h-5" />
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ rotate: 0, color: "currentColor" }}
+          whileHover={{ 
+            rotate: 30,
+            color: "#26C6DA" // white
+          }}
+          transition={{ type: 'spring', stiffness: 300, duration: 0.3 }}
+        >
+          <FiMoon className="w-5 h-5" />
+        </motion.div>
+      )}
+    </motion.button>
+  )
 }
