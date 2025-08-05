@@ -55,9 +55,10 @@ export default function Hero() {
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
                 transition={{
-                  delay: 0.3 + index * 0.3,
-                  duration: 3,
-                  ease: [0.2, 0.65, 0.3, 0.9]
+                  duration: 5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  visualDuration: 2,
                 }}
                 className="overflow-hidden whitespace-nowrap"
               >

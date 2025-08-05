@@ -5,6 +5,7 @@
   /* Body */
   --background: #F8FAFC;
   --foreground: #D9EAFD;
+  
   --primary-text-color: #000000;
 
   /* nav */
@@ -15,6 +16,18 @@
   --card-bgc: #ffffff;
   --card-tc: #000000;
   --card-bc: #000000;
+  
+  /* card-fixed */
+  --card-bgc-fixed: #D9EAFD;
+  --card-tc-fixed: #000000;
+
+  /* icon */
+  --icon-bgc: #012e51ab;
+  --icon-color: #ffffff;
+
+  /* skill */
+  --skill-foreground: #D9EAFD;
+  --skill-text-color: #000000;
 
   --font-sans: 'var(--font-geist-sans)';
   --font-mono: 'var(--font-geist-mono)';
@@ -33,9 +46,22 @@
   --nav-tc: #ECFAE5;
 
   /* card */
-  --card-bgc: #000000;
+  --card-bgc: #0A2647;
   --card-tc: #ffffff;
   --card-bc: #ffffff;
+
+  /* card-fixed */
+  --card-bgc-fixed: #D9EAFD;
+  --card-tc-fixed: #000000;
+
+  /* icon */
+  --icon-bgc: #144272;
+  --icon-color: #ffffff;
+
+  /* skill */
+  --skill-foreground: #D9EAFD;
+  --skill-text-color: #000000;
+
 }
 
 /* Apply the variables */

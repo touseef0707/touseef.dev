@@ -4,8 +4,6 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import ThemeSwitch from './ThemeSwitch'
-import { socialLinks } from '@/utils/socials'
-import { SocialIcon } from './ui/SocialIcon'
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -48,18 +46,6 @@ const Navbar = () => {
             </ul>
 
             <div className="flex items-center gap-4 ml pl-4">
-              {/* <div className="flex gap-3">
-                {socialLinks.map((link) => (
-                  <SocialIcon
-                    key={link.name}
-                    icon={link.icon}
-                    url={link.url}
-                    color={link.color}
-                    name={link.name}
-                    size={18}
-                  />
-                ))}
-              </div> */}
               <div className='cursor-pointer'>
                 <ThemeSwitch />
               </div>
@@ -68,22 +54,10 @@ const Navbar = () => {
 
           {/* Mobile Hamburger */}
           <div className="md:hidden flex items-center gap-4">
-            <div className="flex gap-2">
-              {socialLinks.map((link) => (
-                <SocialIcon
-                  key={link.name}
-                  icon={link.icon}
-                  url={link.url}
-                  color={link.color}
-                  name={link.name}
-                  size={18}
-                />
-              ))}
-            </div>
             <ThemeSwitch />
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 cursor-pointer"
               aria-label="Toggle menu"
             >
               {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -107,18 +81,6 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex gap-4 px-3 pt-2">
-              {socialLinks.map((link) => (
-                <SocialIcon
-                  key={link.name}
-                  icon={link.icon}
-                  url={link.url}
-                  color={link.color}
-                  name={link.name}
-                  size={20}
-                />
-              ))}
-            </div>
           </div>
         )}
       </nav>
