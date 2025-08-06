@@ -16,7 +16,7 @@ const Connect = () => {
         className="text-3xl font-bold text-center mb-12"
         style={{ color: 'var(--primary-text-color)' }}
       >
-        Let's Connect
+        Let&apos;s Connect
       </motion.h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

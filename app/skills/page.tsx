@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { skillCategories } from '@/utils/skillData';
+import Image from 'next/image';
 
 const Skills = () => {
   return (
@@ -45,36 +46,43 @@ const Skills = () => {
                 </div>
 
                 <div className="grid grid-cols-3 gap-3">
-                  {category.skills.map((skill, skillIndex) => (
-                    <motion.div
-                      key={skillIndex}
-                      whileHover={{ scale: 1.05 }}
-                      className="flex flex-col items-center p-3 rounded-md relative"
-                      style={{ backgroundColor: 'var(--skill-foreground)', color: 'var(--skill-text-color)' }}
-                    >
-                      <div className="w-8 h-8 mb-2">
-                        <img
-                          src={skill.icon}
-                          alt={skill.name}
-                          className="w-full h-full object-contain"
-                          onError={(e) => {
-                            const target = e.target as HTMLImageElement;
-                            target.onerror = null;
-                            target.src = `https://via.placeholder.com/32?text=${skill.name.charAt(0)}`;
-                            target.className = 'w-full h-full object-contain bg-gray-200 rounded';
-                          }}
-                        />
-                      </div>
-                      <span className="text-xs text-center">{skill.name}</span>
-                      {/* Proficiency bar for each skill */}
-                      <div className="absolute bottom-0 left-0 right-0 h-1 bg-black rounded-b-md">
-                        <div 
-                          className="h-full bg-cyan-400 rounded-b-md"
-                          style={{ width: `${skill.proficiency}%` }}
-                        ></div>
-                      </div>
-                    </motion.div>
-                  ))}
+                  {category.skills.map((skill, skillIndex) => {
+                    // Determine if the icon is a valid URL (basic check)
+                    const isValidIcon = skill.icon && (skill.icon.startsWith('http') || skill.icon.startsWith('/'));
+                    const iconSrc = isValidIcon ? skill.icon : `https://via.placeholder.com/32?text=${skill.name.charAt(0)}`;
+                    return (
+                      <motion.div
+                        key={skillIndex}
+                        whileHover={{ scale: 1.05 }}
+                        className="flex flex-col items-center p-3 rounded-md relative"
+                        style={{ backgroundColor: 'var(--skill-foreground)', color: 'var(--skill-text-color)' }}
+                      >
+                        <div className="w-8 h-8 mb-2">
+                          <Image
+                            src={iconSrc}
+                            alt={skill.name}
+                            width={32}
+                            height={32}
+                            className="w-full h-full object-contain bg-gray-200 rounded"
+                            unoptimized={iconSrc.startsWith('http')}
+                          />
+                        </div>
+                        <span className="text-xs text-center">{skill.name}</span>
+                        {/* Proficiency bar for each skill */}
+                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-black rounded-b-md overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${skill.proficiency}%` }}
+                            transition={{
+                              duration: 2,
+                              ease: "easeInOut"
+                            }}
+                            className="h-full bg-cyan-400 rounded-b-md"
+                          />
+                        </div>
+                      </motion.div>
+                    );
+                  })}
                 </div>
               </div>
             </motion.div>

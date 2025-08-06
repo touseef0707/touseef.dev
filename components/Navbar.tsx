@@ -24,9 +24,9 @@ const Navbar = () => {
           {/* Logo / Home */}
           <Link 
             href="/" 
-            className="text-xl font-bold tracking-tight hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-200"
+            className="text-xl font-bold tracking-tight hover:text-cyan-400 transition-colors duration-200"
           >
-            Touseef.dev
+            {'< / > Touseef Ahmed'} 
           </Link>
 
           {/* Desktop Nav */}
