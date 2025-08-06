@@ -26,7 +26,7 @@ const Navbar = () => {
             href="/" 
             className="text-xl font-bold tracking-tight hover:text-cyan-400 transition-colors duration-200"
           >
-            {'< / > Touseef Ahmed'} 
+            {'< / > Devfolio'} 
           </Link>
 
           {/* Desktop Nav */}

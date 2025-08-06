@@ -3,7 +3,7 @@
 /* Base light theme variables */
 :root {
   /* Body */
-  --background: #F8FAFC;
+  --background: linear-gradient(135deg, #ffffff 0%, #f7d6ff 100%);
   --foreground: #D9EAFD;
   
   --primary-text-color: #000000;
@@ -36,17 +36,17 @@
 /* Dark theme overrides when `.dark` class is applied */
 .dark {
   /* body */
-  --background: #0A2647;
-  --foreground: #144272;
+  --background: linear-gradient(135deg, #1b1b1b 0%, #000000 100%);
+  --foreground: #373b41;
   --primary-accent-color: #D2C1B6; /* lines */
   --primary-text-color: #F9F3EF;
 
   /* nav */
-  --nav-bgc: #144272;
+  --nav-bgc: #161a1e;
   --nav-tc: #ECFAE5;
 
   /* card */
-  --card-bgc: #0A2647;
+  --card-bgc: #161a1e;
   --card-tc: #ffffff;
   --card-bc: #ffffff;
 

@@ -1,82 +1,154 @@
 'use client';
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import { fadeIn, textVariant, zoomIn, staggerContainer } from "@/utils/animations";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [displayText, setDisplayText] = useState("");
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [showCursor, setShowCursor] = useState(true);
+
   const textLines = [
-    "Building scalable web apps with 3+ years experience.",
-    "Passionate about AI automation and cloud solutions."
+    "Building scalable web apps with 3+ years experience",
+    "Passionate about AI automation and cloud solutions",
+    "Full Stack Developer | Cloud Architect | AI Enthusiast"
   ];
+
+  // Typewriter effect with cursor blink
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+
+    return () => clearInterval(cursorInterval);
+  }, []);
+
+  useEffect(() => {
+    if (currentLineIndex >= textLines.length) return;
+
+    const timeout = setTimeout(() => {
+      if (currentCharIndex < textLines[currentLineIndex].length) {
+        setDisplayText(prev => prev + textLines[currentLineIndex][currentCharIndex]);
+        setCurrentCharIndex(prev => prev + 1);
+      } else {
+        setTimeout(() => {
+          setDisplayText("");
+          setCurrentCharIndex(0);
+          setCurrentLineIndex(prev => (prev + 1) % textLines.length);
+        }, 1500);
+      }
+    }, 100);
+
+    return () => clearTimeout(timeout);
+  }, [currentCharIndex, currentLineIndex]);
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants: Variants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
+
+  const imageVariants: Variants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
 
   return (
     <motion.section
       initial="hidden"
       animate="visible"
-      variants={staggerContainer}
-      className="w-full max-w-4xl mx-auto py-12 px-4"
+      variants={containerVariants}
+      className="w-full max-w-6xl mx-auto py-16 px-4 sm:px-6 lg:px-8"
     >
-      <div className="flex flex-col md:flex-row gap-8 items-center">
-        {/* Image - Now on left side */}
+      <div className="flex flex-col md:flex-row gap-12 items-center">
+        {/* Image with animation */}
         <motion.div
-          variants={zoomIn(0.2)}
-          className="w-32 h-32 md:w-56 md:h-56 rounded-full overflow-hidden border-2 border-[var(--primary-accent-color)] order-first md:order-none"
+          variants={imageVariants}
+          className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[var(--primary-accent-color)] shadow-lg order-first md:order-none"
         >
           <Image
             src="https://avatars.githubusercontent.com/u/152942742?v=4"
             alt="Touseef Ahmed"
-            width={300}
-            height={300}
-            className="object-cover w-full h-full"
+            fill
+            className="object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent to-blue-500 opacity-20 mix-blend-overlay" />
         </motion.div>
 
         {/* Text Content */}
-        <div className="flex-1">
-          <motion.h1 
-            variants={textVariant(0.1)}
-            className="text-3xl md:text-4xl font-bold mb-2"
+        <div className="flex-1 space-y-6">
+          <motion.h1
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600"
           >
-            Touseef Ahmed
+            Hey, It's Touseef Ahmed!
           </motion.h1>
-          
-          <motion.h2 
-            variants={textVariant(0.2)}
-            className="text-xl md:text-2xl text-blue-500 mb-4"
+
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center"
           >
-            Full Stack Developer | Cloud Architect | AI Enthusiast
-          </motion.h2>
-          
-          <div className="mb-6">
-            {textLines.map((line, index) => (
-              <motion.div
-                key={index}
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  visualDuration: 2,
-                }}
-                className="overflow-hidden whitespace-nowrap"
-              >
-                <motion.p 
-                  className="text-[var(--primary-text-color)] opacity-90"
-                >
-                  {line}
-                </motion.p>
-              </motion.div>
-            ))}
-          </div>
-          
-          <motion.button 
-            variants={fadeIn("up", 0.4)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 transition-colors"
+            <p className="text-xl md:text-2xl text-[var(--primary-text-color)]">
+              {displayText}
+              <span className={`inline-block w-1 h-6 bg-blue-500 ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}></span>
+            </p>
+          </motion.div>
+
+          <motion.p
+            variants={itemVariants}
+            className="text-lg text-[var(--primary-text-color)] max-w-2xl"
           >
-            Explore My Work →
-          </motion.button>
+            Versatile and results-driven Full Stack Web Developer with expertise in building scalable, user-focused applications and integrating AI to automate workflows.
+          </motion.p>
+
+          <motion.div
+            variants={itemVariants}
+            className="flex gap-4 pt-4"
+          >
+            <Link
+              href="projects"
+              scroll={false}
+              className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+            >
+              Explore My Work →
+            </Link>
+            <Link
+              href="connect"
+              scroll={false}
+              className="px-6 py-3 border border-blue-500 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-all"
+            >
+              Contact Me
+            </Link>
+          </motion.div>
         </div>
       </div>
     </motion.section>
