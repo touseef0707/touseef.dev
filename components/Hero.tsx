@@ -2,47 +2,14 @@
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { TypewriterText } from "@/components/ui/TypewriterText";
 
 export default function Hero() {
-  const [displayText, setDisplayText] = useState("");
-  const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [currentCharIndex, setCurrentCharIndex] = useState(0);
-  const [showCursor, setShowCursor] = useState(true);
-
   const textLines = [
     "Building scalable web apps with 3+ years experience",
     "Passionate about AI automation and cloud solutions",
     "Full Stack Developer | Cloud Architect | AI Enthusiast"
   ];
-
-  // Typewriter effect with cursor blink
-  useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev);
-    }, 500);
-
-    return () => clearInterval(cursorInterval);
-  }, []);
-
-  useEffect(() => {
-    if (currentLineIndex >= textLines.length) return;
-
-    const timeout = setTimeout(() => {
-      if (currentCharIndex < textLines[currentLineIndex].length) {
-        setDisplayText(prev => prev + textLines[currentLineIndex][currentCharIndex]);
-        setCurrentCharIndex(prev => prev + 1);
-      } else {
-        setTimeout(() => {
-          setDisplayText("");
-          setCurrentCharIndex(0);
-          setCurrentLineIndex(prev => (prev + 1) % textLines.length);
-        }, 1500);
-      }
-    }, 100);
-
-    return () => clearTimeout(timeout);
-  }, [currentCharIndex, currentLineIndex]);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -86,7 +53,7 @@ export default function Hero() {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="w-full max-w-6xl mx-auto py-16 px-4 sm:px-6 lg:px-8"
+      className="w-full max-w-6xl mx-auto py-16 px-4 sm:px-6 lg:px-8 z-50 bg-gray-400/20 dark:bg-gray-400/10 backdrop-blur-sm rounded-2xl"
     >
       <div className="flex flex-col md:flex-row gap-12 items-center">
         {/* Image with animation */}
@@ -118,8 +85,13 @@ export default function Hero() {
             className="flex items-center"
           >
             <p className="text-xl md:text-2xl text-[var(--primary-text-color)]">
-              {displayText}
-              <span className={`inline-block w-1 h-6 bg-blue-500 ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}></span>
+              <TypewriterText 
+                lines={textLines}
+                speed={100}
+                delayBetweenLines={1500}
+                className="inline-block"
+                cursorClassName="inline-block w-1 h-6 bg-blue-500 ml-1"
+              />
             </p>
           </motion.div>
 

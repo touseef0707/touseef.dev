@@ -97,6 +97,16 @@ export const skillCategories = [
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg',
         proficiency: 80,
       },
+      {
+        name: 'DynamoDB',
+        icon: 'https://icon.icepanel.io/AWS/svg/Database/DynamoDB.svg',
+        proficiency: 50,
+      },
+      {
+        name: 'Redis',
+        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
+        proficiency: 50,
+      },
     ],
   },
   {

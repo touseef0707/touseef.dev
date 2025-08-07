@@ -3,10 +3,12 @@
 /* Base light theme variables */
 :root {
   /* Body */
-  --background: linear-gradient(135deg, #ffffff 0%, #f7d6ff 100%);
+  --background: linear-gradient(to right, #acb6e5, #86fde8);
   --foreground: #D9EAFD;
   
   --primary-text-color: #000000;
+
+  --input-bg: #67d3f444;
 
   /* nav */
   --nav-bgc: #000000;
@@ -36,13 +38,16 @@
 /* Dark theme overrides when `.dark` class is applied */
 .dark {
   /* body */
-  --background: linear-gradient(135deg, #1b1b1b 0%, #000000 100%);
+  /* --background: linear-gradient(to right, #0f2027, #203a43, #2c5364); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  --background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
   --foreground: #373b41;
   --primary-accent-color: #D2C1B6; /* lines */
   --primary-text-color: #F9F3EF;
 
+  --input-bg: #00000052;
+
   /* nav */
-  --nav-bgc: #161a1e;
+  --nav-bgc: #000000;
   --nav-tc: #ECFAE5;
 
   /* card */

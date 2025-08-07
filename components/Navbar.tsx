@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
@@ -10,14 +9,14 @@ const navLinks = [
   { name: 'Skills', href: 'skills' },
   { name: 'Projects', href: 'projects' },
   { name: 'Experience', href: 'experiences' },
-  { name: 'Connect', href: 'connect' },
+  { name: 'Contact', href: 'connect' },
 ]
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="w-full sticky top-0 z-50 bg-[var(--nav-bgc)] text-[var(--nav-tc)] shadow-md backdrop-blur-sm bg-opacity-90 transition-all duration-300">
+    <header className="w-full sticky top-0 z-100 bg-[var(--nav-bgc)] text-[var(--nav-tc)] shadow-md transition-all duration-300">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
@@ -57,7 +56,7 @@ const Navbar = () => {
             <ThemeSwitch />
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 cursor-pointer"
+              className="p-2 rounded-md hover:bg-gray-200/30 dark:hover:bg-gray-700/30 transition-colors duration-200 cursor-pointer"
               aria-label="Toggle menu"
             >
               {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -67,13 +66,13 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="md:hidden mt-2 pb-4">
+          <div className="md:hidden mt-2 pb-4 bg-[var(--nav-bgc)]/80 backdrop-blur-lg rounded-lg">
             <ul className="space-y-3 text-sm font-medium mb-4">
               {navLinks.map(({ name, href }) => (
                 <li key={name}>
                   <Link
                     href={href}
-                    className="block px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-200"
+                    className="block px-3 py-2 rounded-md hover:bg-gray-100/30 dark:hover:bg-gray-800/30 transition-colors duration-200"
                     onClick={() => setMenuOpen(false)}
                   >
                     {name}
@@ -88,4 +87,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;

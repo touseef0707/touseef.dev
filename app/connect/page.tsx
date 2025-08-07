@@ -29,9 +29,8 @@ const Connect = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="rounded-lg p-8"
+            className="rounded-lg p-8 bg-gray-400/20 dark:bg-gray-400/10 backdrop-blur-sm"
             style={{
-              backgroundColor: 'var(--card-bgc)',
               color: 'var(--card-tc)',
               border: '1px solid var(--card-bc)'
             }}
@@ -90,9 +89,8 @@ const Connect = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="rounded-lg p-8"
+            className="rounded-lg p-8 bg-gray-400/20 dark:bg-gray-400/10 backdrop-blur-sm"
             style={{
-              backgroundColor: 'var(--card-bgc)',
               color: 'var(--card-tc)',
               border: '1px solid var(--card-bc)'
             }}
@@ -112,7 +110,7 @@ const Connect = () => {
                     id="name"
                     className="w-full px-4 py-2 rounded-lg"
                     style={{
-                      backgroundColor: 'var(--foreground)',
+                      backgroundColor: 'var(--input-bg)',
                       color: 'var(--primary-text-color)',
                       border: '1px solid var(--card-bc)'
                     }}
@@ -128,7 +126,7 @@ const Connect = () => {
                     id="email"
                     className="w-full px-4 py-2 rounded-lg"
                     style={{
-                      backgroundColor: 'var(--foreground)',
+                      backgroundColor: 'var(--input-bg)',
                       color: 'var(--primary-text-color)',
                       border: '1px solid var(--card-bc)'
                     }}
@@ -146,7 +144,7 @@ const Connect = () => {
                   id="subject"
                   className="w-full px-4 py-2 rounded-lg"
                   style={{
-                    backgroundColor: 'var(--foreground)',
+                    backgroundColor: 'var(--input-bg)',
                     color: 'var(--primary-text-color)',
                     border: '1px solid var(--card-bc)'
                   }}
@@ -163,7 +161,7 @@ const Connect = () => {
                   rows={5}
                   className="w-full px-4 py-2 rounded-lg"
                   style={{
-                    backgroundColor: 'var(--foreground)',
+                    backgroundColor: 'var(--input-bg)',
                     color: 'var(--primary-text-color)',
                     border: '1px solid var(--card-bc)'
                   }}
